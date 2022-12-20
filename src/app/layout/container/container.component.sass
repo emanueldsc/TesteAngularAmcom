@@ -1,0 +1,18 @@
+.mainContainer
+    display: grid
+    grid-template-areas: "navbar header" "navbar content"
+    height: 100%
+    grid-template-columns: max-content 1fr
+    grid-template-rows: max-content 1fr
+
+    .navbar
+        grid-area: navbar
+        background-color: blue
+
+    .header
+        grid-area: header
+        background-color: aliceblue
+
+    .content
+        grid-area: content
+        overflow-y: auto
