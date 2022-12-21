@@ -1,1 +1,111 @@
-<p>home works!</p>
+<div class="homeContainer">
+
+    <h2>
+        Informe o CPF do futuro cooperado (a)
+    </h2>
+
+    <p>
+        Se necessário, você poderá duplicar uma conta existente ou pausar e retomar este cadastro futuramente.
+        Digite apenas os números (sem pontos ou traços).
+    </p>
+
+    <form #f="ngForm" (ngSubmit)="findCpf(f)" class="form">
+        <p-inputMask name="cpf" styleClass="test-input" ngModel [mask]="'999.999.999-99'"
+            placeholder="000.000.000-00"></p-inputMask>
+        <button [disabled]="stateFindCpfButton" class="btn-primary btn-p" type="submit">Consultar por CPF</button>
+    </form>
+
+</div>
+
+<section class="cardSession">
+    <p-card *ngIf="userVM">
+        <ng-template pTemplate="header">
+            <div class="homeCardHeader">
+                <h3>Situação cadastral do CPF</h3>
+                <sub>Consulta na Receita Federal</sub>
+            </div>
+        </ng-template>
+        <div class="homeCardContainer">
+            <div class="homeCardContainerInformation">
+                <div class="icon">
+                    <fa-icon class="cardIcon" [icon]="user"></fa-icon>
+                </div>
+                <div class="label">
+                    <label>Nome</label>
+                </div>
+                <div class="text">
+                    {{userVM.name}}
+                </div>
+            </div>
+            <div class="homeCardContainerInformation">
+                <div class="icon">
+                    <fa-icon *ngIf="userVM?.situation == 'Regular'; else times" class="cardIcon text-success"
+                        [icon]="check"></fa-icon>
+                    <ng-template #times let-[noCheck]="noCheck">
+                        <fa-icon class="cardIcon text-danger" [icon]="noCheck"></fa-icon>
+                    </ng-template>
+                </div>
+                <div class="label">Situação do CPF</div>
+                <div class="text">{{userVM.situation}}</div>
+            </div>
+        </div>
+    </p-card>
+</section>
+
+<footer class="homeFooter">
+    <button class="btn-primary btn-m">Dicas para abertura da conta</button>
+    <button class="btn-secondary btn-m">Iniciar nova admiss&atilde;o</button>
+    <button class="btn-secondary btn-m" (click)="showTips = true">Dicas para abertura da conta</button>
+</footer>
+
+<p-sidebar [style]="{width:'max-content', maxWidth: '426px', paddingTop: '100px'}" styleClass="tipsContainer"
+    [(visible)]="showTips" position="right" [showCloseIcon]="false" [closeOnEscape]="false" [dismissible]="false">
+
+    <ng-template pTemplate="header">
+        <h2>
+            Check-list para
+            abertura da conta
+        </h2>
+        <p>
+            Confira algumas dicas que irão lhe ajudar neste atendimento para que a admissão aconteça da melhor forma
+            possível.
+        </p>
+        <div>
+            <label>
+                <input type="checkbox" #meetYourCooperative (change)="meetYourCooperative.checked">
+                Conheça seu cooperado
+            </label> <br>
+            <ul *ngIf="meetYourCooperative.checked">
+                <li>O que traz você até a Cooperativa?</li>
+                <li>O que é mais importante na sua vida?</li>
+                <li>Você tem algum sonho?</li>
+            </ul>
+
+            <label>
+                <input type="checkbox" #talkAboutCooperative (change)="talkAboutCooperative.checked">
+                Fale sobre a Cooperativa
+            </label> <br>
+            <ul *ngIf="talkAboutCooperative.checked">
+                <li>O que traz você até a Cooperativa?</li>
+                <li>O que é mais importante na sua vida?</li>
+                <li>Você tem algum sonho?</li>
+            </ul>
+
+            <label> <input type="checkbox" #necessaryDocuments (change)="necessaryDocuments.checked">
+                Documentos e comprovações necessárias
+            </label>
+            <ul *ngIf="necessaryDocuments.checked">
+                <li>O que traz você até a Cooperativa?</li>
+                <li>O que é mais importante na sua vida?</li>
+                <li>Você tem algum sonho?</li>
+            </ul>
+        </div>
+    </ng-template>
+
+
+
+    <ng-template pTemplate="footer">
+        <button class="btn-secondary btn-m closeTips" (click)="showTips = false">Continuar atendimento</button>
+    </ng-template>
+
+</p-sidebar>
