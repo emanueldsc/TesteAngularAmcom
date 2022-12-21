@@ -6,6 +6,8 @@ import { StepsModule } from 'primeng/steps';
 import { InputMaskModule } from 'primeng/inputmask';
 import { CardModule } from 'primeng/card';
 import { SidebarModule } from 'primeng/sidebar';
+import { InputSwitchModule } from 'primeng/inputswitch';
+
 
 @NgModule({
   declarations: [],
@@ -15,7 +17,8 @@ import { SidebarModule } from 'primeng/sidebar';
     BreadcrumbModule,
     StepsModule,
     CardModule,
-    SidebarModule
+    SidebarModule,
+    InputSwitchModule
   ],
   exports: [
     RippleModule,
@@ -23,7 +26,8 @@ import { SidebarModule } from 'primeng/sidebar';
     StepsModule,
     InputMaskModule,
     CardModule,
-    SidebarModule
+    SidebarModule,
+    InputSwitchModule
   ]
 })
 export class PrimeNgModule { }

@@ -10,9 +10,18 @@
     </p>
 
     <form #f="ngForm" (ngSubmit)="findCpf(f)" class="form">
-        <p-inputMask name="cpf" styleClass="test-input" ngModel [mask]="'999.999.999-99'"
-            placeholder="000.000.000-00"></p-inputMask>
-        <button [disabled]="stateFindCpfButton" class="btn-primary btn-p" type="submit">Consultar por CPF</button>
+        <div>
+            <label class="ml-6 mb-6"><b>CPF</b></label>
+            <p-inputMask (onFocus)="focusInputCPF()" #inputCpf name="cpf" styleClass="{{invalidCpf && 'input-invalid'}} test-input" ngModel
+                [mask]="'999.999.999-99'" placeholder="000.000.000-00"></p-inputMask>
+            <small *ngIf="invalidCpf" class="p-error invalidCpf">Informe um CPF v&aacute;lido</small>
+        </div>
+
+        <button name="btnFindCpf" #btnFindCpf [ngClass]="statusLabelFindBtn === 'ready' ? 'btn-primary' : 'btn-disabled'"
+            class="btn-p btnFindCpf mb-1" type="submit">
+            <span *ngIf="statusLabelFindBtn != 'searching'">Consultar por CPF</span>
+            <fa-icon *ngIf="statusLabelFindBtn === 'searching'" class="rotate" [icon]="loadSpinner"></fa-icon>
+        </button>
     </form>
 
 </div>
@@ -50,11 +59,54 @@
             </div>
         </div>
     </p-card>
+    <p-card *ngIf="userVM" styleClass="h-100">
+        <ng-template pTemplate="header">
+            <div class="homeCardHeader">
+                <h3>Conta aplica&ccedil;&atilde;o</h3>
+                <sub>Cooperativa Viacredi</sub>
+            </div>
+        </ng-template>
+        <div class="homeCardContainer">
+            <div class="homeCardContainerInformation">
+                <div class="icon">
+                    <fa-icon class="cardIcon" [icon]="user"></fa-icon>
+                </div>
+                <div class="label">
+                    <label>N&uacute;mero da conta</label>
+                </div>
+                <div class="text">
+                    {{userVM.accoutNumberApplication}}
+                </div>
+            </div>
+            <a class="btn-link">Duplicar conta</a>
+        </div>
+    </p-card>
+    <p-card *ngIf="userVM" styleClass="h-100">
+        <ng-template pTemplate="header">
+            <div class="homeCardHeader">
+                <h3>Conta corrente</h3>
+                <sub>Cooperativa Viacredi</sub>
+            </div>
+        </ng-template>
+        <div class="homeCardContainer">
+            <div class="homeCardContainerInformation">
+                <div class="icon">
+                    <fa-icon class="cardIcon" [icon]="user"></fa-icon>
+                </div>
+                <div class="label">
+                    <label>Número da conta</label>
+                </div>
+                <div class="text">
+                    {{userVM.name}}
+                </div>
+            </div>
+            <a class="btn-link">Duplicar conta</a>
+        </div>
+    </p-card>
 </section>
 
 <footer class="homeFooter">
-    <button class="btn-primary btn-m">Dicas para abertura da conta</button>
-    <button class="btn-secondary btn-m">Iniciar nova admiss&atilde;o</button>
+    <button *ngIf="userVM" class="btn-primary btn-m" (click)="proceed()">Iniciar nova admiss&atilde;o</button>
     <button class="btn-secondary btn-m" (click)="showTips = true">Dicas para abertura da conta</button>
 </footer>
 

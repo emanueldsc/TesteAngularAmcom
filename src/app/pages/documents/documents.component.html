@@ -1,1 +1,46 @@
-<p>documents works!</p>
+<h2 class="mx-25 my-0">
+    Digitalização de documentos
+</h2>
+
+<div class="documentsContainer">
+
+    <h3 class="my-0">
+        Documentos do cooperado
+    </h3>
+
+    <p>
+        A inserção de documentos pode ser feita via upload do computador ou fluxo do SmartShare (impressora). Os
+        documentos devem ter boa visibilidade, estar legíveis e dentro das datas de validade.
+    </p>
+
+    <section class="cardUploadArea">
+        <app-card-upload></app-card-upload>
+        <app-card-upload></app-card-upload>
+        <app-card-upload></app-card-upload>
+        <app-card-upload></app-card-upload>
+    </section>
+
+    <hr class="divider mt-24">
+
+</div>
+
+<div class="documentsContainer">
+
+    <h3 class="my-0">
+        Documentos do Representante
+    </h3>
+
+    <p>
+        Os documentos do responsável legal, curador ou procurador devem ser inclusos no sistema para verificação e devem
+        ter boa visibilidade, estar legíveis e dentro das datas de validade.
+    </p>
+
+    <p-inputSwitch [readonly]="true"></p-inputSwitch>
+
+
+</div>
+
+<footer class="documentFooter">
+    <button class="btn-primary btn-m" >Proximo</button>
+    <a [routerLink]="['..']" class="btn-link my-10 mx-25">Voltar</a>
+</footer>

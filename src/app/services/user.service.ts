@@ -13,10 +13,10 @@ export class UserService {
   private $user: Subject<User| null> = new Subject<User| null>()
   public userObservable = () => this.$user.asObservable().pipe(delay(1000 * 1))
 
-  findUser(cpf: string) {
-    if(cpf)
+  findUser(cpf: string): void {
+    if(cpf == '11122233344')
       this.$user.next(UserValid)
-    else
+    else if ('11111111111')
       this.$user.next(UserNotValid)
   }
 

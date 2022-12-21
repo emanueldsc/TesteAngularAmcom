@@ -3,8 +3,18 @@
 
     .form
         display: flex
-        align-items: center
+        align-items: flex-end
         gap: 15px
+        
+        div
+            *
+                display: block
+
+    .btnFindCpf
+        min-width: 9rem
+
+    .invalidCpf
+        position: absolute
 
 .homeFooter
     display: flex
@@ -17,14 +27,15 @@
 
 .cardSession
     display: flex
+    gap: 15px
     flex-wrap: wrap
     justify-content: flex-start
-    align-items: flex-start
+    align-items: stretch
     padding: 25px
 
     p-card
-    min-width: 270px
-
+        min-width: 270px
+        
     h3
         padding: 0
         margin: 0
@@ -40,7 +51,8 @@
         .homeCardContainerInformation
             display: grid
             grid-template-areas: "icon label" "icon text"
-            grid-template-columns: 32px 1fr
+            grid-template-columns: auto 1fr
+            column-gap: 20px
 
             .icon
                 display: flex
@@ -52,6 +64,8 @@
 
             .label
                 grid-area: label
+                font-size: 11px
+                color: #787878
 
             .text
                 grid-area: text
