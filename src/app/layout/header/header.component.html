@@ -1,3 +1,17 @@
 <header class="headerContainer">
     <h1>{{ title | async }}</h1>
+    <p-breadcrumb [model]="items" [style]="{'border': 'none'}"></p-breadcrumb>
+    <div class="menu">
+        <fa-icon class="bell" [icon]="bellIcon"></fa-icon>
+        
+        <span class="collaborator">
+            Colaborador
+        </span>
+
+        <div class="avatarContainer">
+            <img src="../../../assets/avatar.png" alt="avatar">
+            <fa-icon class="steam" [icon]="gearIcon"></fa-icon>
+        </div>
+
+    </div>
 </header>

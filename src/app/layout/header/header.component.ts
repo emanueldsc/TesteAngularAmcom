@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { MenuItem } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
 
@@ -9,13 +12,25 @@ import { HeaderService } from 'src/app/services/header.service';
 })
 export class HeaderComponent implements OnInit {
 
+  bellIcon = faBell
+  gearIcon = faGear
 
   title: Observable<string> = this.headerService.titleObservable()
 
-  constructor(private headerService: HeaderService) { }
+  items: MenuItem[] = []
+
+constructor(
+    private headerService: HeaderService
+  ) { }
 
   ngOnInit(): void {
 
+    this.headerService.breadcrumbStateObservable.subscribe(data => {
+      this.items = data
+    })
+
   }
+
+
 
 }

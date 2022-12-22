@@ -5,6 +5,8 @@ import { faCheckCircle, faTimesCircle } from '@fortawesome/free-regular-svg-icon
 import { faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { User } from 'src/app/domain/interfaces/User';
 import { UserService } from 'src/app/services/user.service';
+import { NovaAdmissaoCooperadoService } from '../nova-admissao-cooperado/nova-admissao-cooperado.service';
+import { StepperCooperadoStatus } from '../nova-admissao-cooperado/StepperCooperadoStatus';
 
 @Component({
   selector: 'app-home',
@@ -33,10 +35,12 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private route: Router
+    private route: Router,
+    private novaAdmissaoCooperadoService: NovaAdmissaoCooperadoService
   ) { }
 
   ngOnInit(): void {
+    this.novaAdmissaoCooperadoService.setStep = StepperCooperadoStatus.INICIO
     this.userService.userObservable().subscribe(user => {
       if (user) {
         this.userVM = user

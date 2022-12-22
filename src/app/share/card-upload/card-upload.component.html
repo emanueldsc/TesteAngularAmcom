@@ -4,7 +4,7 @@
         {{ title }}
     </h3>
 
-    <sub class="mb-15" [ngClass]="{'text-secondary': optional}">
+    <sub class="mb-15" [ngClass]="optional ? 'text-secondary' :'text-gray'">
         {{ subTitle }}
     </sub>
 
