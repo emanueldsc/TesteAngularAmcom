@@ -8,4 +8,54 @@
     min-width: 270px
 
     h3
+        margin: 0 0 5px
+
+    sub
+        color: orange
+
+    .uploadArea
+        display: flex
+        flex-flow: column nowrap
+        justify-content: center
+        align-items: center
+        gap: 15px
+        border: 1px dashed #C6CED1
         margin: 0
+        padding: 21px
+        cursor: pointer
+
+        .file
+            opacity: 0
+            position: absolute
+
+.dropZone
+    width: 100%
+    position: relative
+    height: 10rem
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    border: 1px dashed #C6CED1
+
+    .imageNotLoaded
+        position: absolute
+        top: 2rem
+    
+    .imageLoaded
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+    span
+        position: relative
+        text-align: center
+        top: 2rem
+        color: #889499
+        font-weight: 700
+
+    .file
+        opacity: 0
+        width: 100%
+        height: 100%
+        position: absolute

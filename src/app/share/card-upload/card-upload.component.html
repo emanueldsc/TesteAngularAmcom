@@ -4,14 +4,17 @@
         {{ title }}
     </h3>
 
-    <sub>
+    <sub class="mb-15" [ngClass]="{'text-secondary': optional}">
         {{ subTitle }}
     </sub>
 
-    <figure>
-        
-    </figure>
 
 
+    <div class="dropZone">
+        <img class="imageNotLoaded" src="../../../assets/uploadBox.png" *ngIf="!fileSelected">
+        <span *ngIf="!fileSelected">Clique aqui ou <br> arraste os seus arquivos</span>
+        <img class="imageLoaded" #imageSelectVM *ngIf="fileSelected" />
+        <input type="file" class="file" (change)="onFileSelect($event)">
+    </div>
 
 </div>

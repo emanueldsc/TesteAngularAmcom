@@ -5,13 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.sass']
 })
-export class DocumentsComponent implements OnInit {
+export class DocumentsComponent {
 
   inputSwitch: boolean = false
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
